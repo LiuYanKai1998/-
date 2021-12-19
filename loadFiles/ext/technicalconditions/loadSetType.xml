@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+	<!--导入命令:windchill wt.load.LoadFileSet -file loadFiles/ext/technicalconditions/loadSetType.xml  -Unattended -NoServerStop -u wcadmin -p wcadmin-->
+	
+	<!-- 更改控制相关文档 -->
+	<loadFile filename="ext\technicalconditions\softtype\更改控制相关文档\更改控制相关文档_0.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\更改控制相关文档\更改控制相关文档_1.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\更改控制相关文档\更改控制相关文档_2.xml" containerPath="/" />
+    
+    <!-- 二维图样 -->
+	<loadFile filename="ext\technicalconditions\softtype\二维图样\二维图样_0.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\二维图样\二维图样_1.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\二维图样\二维图样_2.xml" containerPath="/" />
+	<!-- 二维图更改单 -->
+	<loadFile filename="ext\technicalconditions\softtype\二维图更改单\二维图更改单_0.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\二维图更改单\二维图更改单_1.xml" containerPath="/" />
+	
+	<!-- 技术通知单 -->
+	<loadFile filename="ext\technicalconditions\softtype\技术通知单\技术通知单_0.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\技术通知单\技术通知单_1.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\技术通知单\技术通知单_2.xml" containerPath="/" />
+	<!-- 技术协调单 -->
+	<loadFile filename="ext\technicalconditions\softtype\技术协调单\技术协调单_0.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\技术协调单\技术协调单_1.xml" containerPath="/" />
+    <loadFile filename="ext\technicalconditions\softtype\技术协调单\技术协调单_2.xml" containerPath="/" />
+    
+</loadFileList>

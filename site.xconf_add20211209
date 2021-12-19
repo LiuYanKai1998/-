@@ -1,0 +1,5 @@
+<!--1、手工添加以下内容到site.xconf文件<Configuration></Configuration>节点中-->
+<!--2、windchill shell中执行xconfmanager -p命令发布-->
+<!--3、重启MethodServer生效-->
+
+   <ConfigurationRef xlink:href="codebase/config/xconf/customize_additions.xconf"/>

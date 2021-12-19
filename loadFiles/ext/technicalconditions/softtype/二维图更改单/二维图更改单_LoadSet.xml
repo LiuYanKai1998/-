@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="ext\technicalconditions\softtype\二维图更改单\二维图更改单_0.xml"/>
+   <loadFile filename="ext\technicalconditions\softtype\二维图更改单\二维图更改单_1.xml"/>
+</loadFileList>

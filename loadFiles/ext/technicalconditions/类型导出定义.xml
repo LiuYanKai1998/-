@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE NmLoader SYSTEM "standardX24.dtd">
+<NmLoader>
+<!-- 类型导出定义 -->
+<!-- 1.拷贝本文件到服务器硬盘 -->
+<!-- 2.定义需要导出的类型和文件在服务器上的存储路径 -->
+<!-- 3.shell中执行导出命令,-d后面跟这个xml文件的路径-->
+<!-- 导出命令:windchill wt.load.LoadFromFile -d D:\类型导出定义.xml -u wcadmin -p wcadmin-->
+<!-- 4.拷贝导出的类型文件到代码包 -->
+<!-- 5.整理类型批量导入文件,参考loadSetType.xml-->
+<!-- 6.服务器导入,shell中执行(注意修改导入文件路径):windchill wt.load.LoadFileSet -file loadFiles/ext/technicalconditions/loadSetType.xml  -Unattended -NoServerStop -u wcadmin -p wcadmin-->
+
+<!-- csvexportNames节点:根类型填写全类型,子类型填写逻辑标识符即可,为了管理方便,类型存储文件夹使用中文 --> 
+<!--文档-->
+<csvExportDefinition handler="com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition">
+		<!-- 导出的类型定义文件存储位置 -->
+		<csvtoLocation>D:\ptc\Windchill_11.0\Windchill\loadFiles\ext\technicalconditions\softtype\更改控制相关文档</csvtoLocation>
+		<!-- 导出的xml文件命名 -->
+		<csvtoFileName>更改控制相关文档.xml</csvtoFileName>
+		<csvexportDefClass>com.ptc.core.lwc.server.LWCTypeDefinition</csvexportDefClass>
+		<!-- 导出的类型，填写类型全路径,多级之间用|隔开,子类型填写逻辑标识符-->
+		<csvexportNames>com.xbc.ChangeControlDocument</csvexportNames>
+        <csvmode>0</csvmode>
+        <csvExportAncestorTypes>true</csvExportAncestorTypes>
+</csvExportDefinition>
+
+<csvExportDefinition handler="com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition">
+		<!-- 导出的类型定义文件存储位置 -->
+		<csvtoLocation>D:\ptc\Windchill_11.0\Windchill\loadFiles\ext\technicalconditions\softtype\二维图更改单</csvtoLocation>
+		<csvtoFileName>二维图更改单.xml</csvtoFileName>
+		<csvexportDefClass>com.ptc.core.lwc.server.LWCTypeDefinition</csvexportDefClass>
+		<!-- 导出的类型，填写类型全路径,多级之间用|隔开,子类型填写逻辑标识符-->
+		<csvexportNames>com.xbc.2DDrawingChangeSheet</csvexportNames>
+        <csvmode>0</csvmode>
+        <csvExportAncestorTypes>true</csvExportAncestorTypes>
+</csvExportDefinition>
+
+<csvExportDefinition handler="com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition">
+		<!-- 导出的类型定义文件存储位置 -->
+		<csvtoLocation>D:\ptc\Windchill_11.0\Windchill\loadFiles\ext\technicalconditions\softtype\二维图样</csvtoLocation>
+		<csvtoFileName>二维图样.xml</csvtoFileName>
+		<csvexportDefClass>com.ptc.core.lwc.server.LWCTypeDefinition</csvexportDefClass>
+		<!-- 导出的类型，填写类型全路径,多级之间用|隔开,子类型填写逻辑标识符-->
+		<csvexportNames>com.xbc.TwoDimensionalPattern</csvexportNames>
+        <csvmode>0</csvmode>
+        <csvExportAncestorTypes>true</csvExportAncestorTypes>
+</csvExportDefinition>
+
+<csvExportDefinition handler="com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition">
+		<!-- 导出的类型定义文件存储位置 -->
+		<csvtoLocation>D:\ptc\Windchill_11.0\Windchill\loadFiles\ext\technicalconditions\softtype\技术通知单</csvtoLocation>
+		<csvtoFileName>技术通知单.xml</csvtoFileName>
+		<csvexportDefClass>com.ptc.core.lwc.server.LWCTypeDefinition</csvexportDefClass>
+		<!-- 导出的类型，填写类型全路径,多级之间用|隔开,子类型填写逻辑标识符-->
+		<csvexportNames>com.xbc.TechnicalNoticeSheet</csvexportNames>
+        <csvmode>0</csvmode>
+        <csvExportAncestorTypes>true</csvExportAncestorTypes>
+</csvExportDefinition>
+
+<csvExportDefinition handler="com.ptc.core.lwc.server.TypeDefinitionExporter.beginExportDefinition">
+		<!-- 导出的类型定义文件存储位置 -->
+		<csvtoLocation>D:\ptc\Windchill_11.0\Windchill\loadFiles\ext\technicalconditions\softtype\技术协调单</csvtoLocation>
+		<csvtoFileName>技术协调单.xml</csvtoFileName>
+		<csvexportDefClass>com.ptc.core.lwc.server.LWCTypeDefinition</csvexportDefClass>
+		<!-- 导出的类型，填写类型全路径,多级之间用|隔开,子类型填写逻辑标识符-->
+		<csvexportNames>com.xbc.TechnicalCoordinationSheet</csvexportNames>
+        <csvmode>0</csvmode>
+        <csvExportAncestorTypes>true</csvExportAncestorTypes>
+</csvExportDefinition>
+
+
+</NmLoader>

@@ -1,0 +1,49 @@
+ResourceInfo.class=wt.tools.resource.EnumResourceInfo
+ResourceInfo.customizable=true
+ResourceInfo.deprecated=false
+
+# Entry Format (values equal to default value are not included)
+# <key>.value=
+# <key>.category=
+# <key>.comment=
+# <key>.argComment<n>=
+# <key>.constant=
+# <key>.customizable=
+# <key>.deprecated=
+# <key>.abbreviatedDisplay=
+# <key>.fullDisplay=
+# <key>.shortDescription=
+# <key>.longDescription=
+# <key>.order=
+# <key>.defaultValue=
+# <key>.selectable=
+
+#########1、以上内容为固定格式(以下说明对于状态(StateRB)、角色(RoleRB)、和系统中所有的rbInfo文件有效)
+#########2、此文件无需手工创建,复制src/wt/lifecycle/StateRB.rbInfo文件到此目录(注意:文件编码ANSI,eclipse显示编码GBK),移除原有状态配置,新增状态配置即可
+#########3、修改完毕,拷贝到windchill/wtCustom同目录下
+#########4、shell中执行resourcebuild wt.lifecycle.StateRB进行编译,系统后台自动编译StateRB所有语言的rbInfo文件,并对src和wtCustom下的StateRB进行合并编译
+#########5、shell中执行ant -f codebase/MakeJar.xml,此命令用于重新生成在客户端applet执行的jar包(生命周期模板管理、工作流模板管理、策略管理器等需要applet的地方)
+#########6、重启MethodServer
+#########7、清理客户端java和浏览器缓存,参见03_客户端电脑配置V1.0.docx第4章。
+#增加一个状态,有两行配置,后台操作使用状态key(纯英文)
+#1状态key.value=该状态的中文显示名称
+#2状态key.shortDescription=该状态的描述信息
+
+#更改控制流程
+#签审中,验证中,已验证,作废
+XBC_UNDERREVIEW.value=XBC_签审中
+XBC_UNDERREVIEW.shortDescription=XBC_签审中
+XBC_UNDERREVIEW.order=9001
+
+XBC_PROVING.value=XBC_验证中
+XBC_PROVING.shortDescription=XBC_验证中
+XBC_PROVING.order=9002
+
+XBC_VERIFIED.value=XBC_已验证
+XBC_VERIFIED.shortDescription=XBC_已验证
+XBC_VERIFIED.order=9003
+
+XBC_CANCELLATION.value=XBC_作废
+XBC_CANCELLATION.shortDescription=XBC_作废
+XBC_CANCELLATION.order=9004
+

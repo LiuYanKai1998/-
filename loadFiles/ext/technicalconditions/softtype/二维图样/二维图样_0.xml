@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standardX26.dtd">
+<NmLoader>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>ChangeControl</csvname>
+      <csvhierarchyDisplayName>更改控制流程全局属性</csvhierarchyDisplayName>
+      <csvorganizerPaths></csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name/>
+      <csvdescription/>
+      <csvdata_type>ORG</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier/>
+   </csvAttrDefinizer>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>mapSheet</csvname>
+      <csvhierarchyDisplayName>mapSheet</csvhierarchyDisplayName>
+      <csvorganizerPaths>ChangeControl</csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name>图幅</csvdisplay_name>
+      <csvdescription>mapSheet</csvdescription>
+      <csvdata_type>STR</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier>mapSheet</csvlogicalIdentifier>
+   </csvAttrDefinizer>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>2DDrawingVersion</csvname>
+      <csvhierarchyDisplayName>2DDrawingVersion</csvhierarchyDisplayName>
+      <csvorganizerPaths>ChangeControl</csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name>二维图版本</csvdisplay_name>
+      <csvdescription>2DDrawingVersion</csvdescription>
+      <csvdata_type>STR</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier>2DDrawingVersion</csvlogicalIdentifier>
+   </csvAttrDefinizer>
+</NmLoader>

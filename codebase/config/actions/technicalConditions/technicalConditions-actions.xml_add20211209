@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listofactions SYSTEM "actions.dtd">
+<listofactions>
+
+	<objecttype name="TwoDimensionalPattern" resourceBundle="ext.technicalconditions.resource.create2DChangeRB">
+			<!--创建二维图纸更改单-->
+		<action name="create2DChange" >
+
+			<command class="ext.technicalconditions.mvc.processor.Create2DChangeProcessor" 
+					 windowType="popup" method="execute" 
+					 url="netmarkets/jsp/document/create.jsp?type=wt.doc.WTDocument|com.xbc.ChangeControlDocument|com.xbc.2DDrawingChangeSheet"/>
+			<!-- 菜单操作过滤器,name的值为在xconf文件中注册的过滤器处理类的key,查看site.xconf_add(过滤器配置)-->
+			<includeFilter name="Create2DChangeFilter" /> 
+		</action>
+	</objecttype>
+
+	
+
+</listofactions>

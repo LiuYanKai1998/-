@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configuration
+  SYSTEM "xconf.dtd">
+<Configuration xmlns:xlink="http://www.w3.org/1999/xlink">
+
+   
+  <!-- 配置过滤器 -->
+   <Service context="default" name="com.ptc.core.ui.validation.SimpleValidationFilter" targetFile="codebase/service.properties">
+   		<!-- 增加Option节点描述自定义的Filter类 -->
+		<!-- 创建二维图更改单过滤器 -->
+   		<Option serviceClass="ext.technicalconditions.filter.Create2DChangeFilter" 
+   				requestor="null" selector="Create2DChangeFilter" cardinality="duplicate"/>
+
+   </Service>
+			  
+</Configuration>
+
+
+
+
+
+
+
+

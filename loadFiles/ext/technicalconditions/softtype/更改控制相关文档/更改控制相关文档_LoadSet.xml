@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList
+  SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+   <loadFile filename="ext\technicalconditions\softtype\更改控制相关文档\更改控制相关文档_0.xml"/>
+   <loadFile filename="ext\technicalconditions\softtype\更改控制相关文档\更改控制相关文档_1.xml"/>
+   <loadFile filename="ext\technicalconditions\softtype\更改控制相关文档\更改控制相关文档_2.xml"/>
+</loadFileList>

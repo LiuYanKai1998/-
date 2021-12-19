@@ -1,0 +1,65 @@
+ResourceInfo.class=wt.tools.resource.EnumResourceInfo
+ResourceInfo.customizable=true
+ResourceInfo.deprecated=false
+
+# Entry Format (values equal to default value are not included)
+# <key>.value=
+# <key>.category=
+# <key>.comment=
+# <key>.argComment<n>=
+# <key>.constant=
+# <key>.customizable=
+# <key>.deprecated=
+# <key>.abbreviatedDisplay=
+# <key>.fullDisplay=
+# <key>.shortDescription=
+# <key>.longDescription=
+# <key>.order=
+# <key>.defaultValue=
+# <key>.selectable=
+
+# Entry Contents
+# custom Roles
+
+#校对者,审核者,会签者,审定者,批准者
+
+XIAODUI.value=校对者
+XIAODUI.shortDescription=校对者
+XIAODUI.order=9001
+
+SHENHE.value=审核者
+SHENHE.shortDescription=审核者
+SHENHE.order=9002
+
+HUIQIAN.value=会签者
+HUIQIAN.shortDescription=会签者
+HUIQIAN.order=9003
+
+SHENDING.value=审定者
+SHENDING.shortDescription=审定者
+SHENDING.order=9004
+
+APPROVER.value=批准者
+APPROVER.shortDescription=批准者
+APPROVER.order=9005
+
+BidReviewer.value=标审者
+BidReviewer.shortDescription=标审者
+BidReviewer.order=9006
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

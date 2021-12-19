@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE loadFileList SYSTEM "/wt/load/windchillLoad.dtd">
+<loadFileList>
+	<!--导入命令:windchill wt.load.LoadFileSet -file loadFiles/ext/technicalconditions/loadSet.xml  -Unattended -NoServerStop -u wcadmin -p wcadmin-->
+	<!--containerPath属性:-->
+	<!--使用/对容器层级进行划分,/表示站点,多级容器之间用/隔开-->
+	<!-- 导入到站点下containerPath="/"-->
+	<!-- 导入到组织下containerPath="wt.inf.container.OrgContainer=<组织名称>"-->
+	<!-- 导入到存储库containerPath="/wt.inf.container.OrgContainer=<组织名称>/wt.inf.library.WTLibrary=<存储库名称>"> -->
+ 	<!-- 导入到产品库containerPath="/wt.inf.container.OrgContainer=<组织名称>/wt.pdmlink.PDMLinkProduct=<产品库名称>"> -->
+	<!-- 为了方便导入时排错,一般情况下,用户、组、类型、任务表单模板单独执行导入,在全部导入完毕后再批量导入工作流、生命周期、对象初始化规则 -->
+	<!-- 工作流 -->
+	<loadFile filename="ext/technicalconditions/workflow/TechnicalCoordinationSheet_WF.xml" title="TechnicalCoordinationSheet_WF" containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/workflow/TechnicalNoticeSheet_WF.xml" title="TechnicalNoticeSheet_WF" containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/workflow/TwoDimensionalPattern_WF.xml" title="TwoDimensionalPattern_WF" containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/workflow/2DDrawingChangeSheet_WF.xml" title="2DDrawingChangeSheet_WF" containerPath="/"/>
+	
+	<!-- 生命周期 -->
+	<loadFile filename="ext/technicalconditions/lifecycle/TechnicalCoordinationDocument_LC.xml" title="TechnicalCoordinationDocument_LC" containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/lifecycle/TechnicalNoticeDocument_LC.xml" title="TechnicalNoticeDocument_LC" containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/lifecycle/TwoDimensionalPattern_LC.xml" title="TwoDimensionalPattern_LC" containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/lifecycle/TwoDimensionalPatternChange_LC.xml" title="TwoDimensionalPatternChange_LC" containerPath="/"/>
+	
+	
+	<!-- 对象初始化规则 -->
+	<loadFile filename="ext/technicalconditions/initialrule/rule_技术协调单.xml"   title="rule_技术协调单.xml"  containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/initialrule/rule_技术通知单.xml"   title="rule_技术通知单.xml"  containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/initialrule/rule_二维图样.xml"   title="rule_二维图样.xml"  containerPath="/"/>
+	<loadFile filename="ext/technicalconditions/initialrule/rule_二维图更改单.xml"   title="rule_二维图更改单.xml"  containerPath="/"/>
+	 
+</loadFileList>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE NmLoader SYSTEM "standardX26.dtd">
+<NmLoader>
+  <csvLifeCycleTemplateBegin handler="wt.lifecycle.LoadLifeCycle.createLifeCycleTemplate">
+    <csvname>TwoDimensionalPattern_LC</csvname>
+    <csvdescription></csvdescription>
+    <csvsupportedClass>wt.fc.WTObject</csvsupportedClass>
+    <csvfolderLocation>/System</csvfolderLocation>
+    <csvenabled>true</csvenabled>
+    <csvrouting>false</csvrouting>
+    <csvbasic>false</csvbasic>
+  </csvLifeCycleTemplateBegin>
+  <csvPhaseTemplateBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateBegin">
+    <csvname>正在工作</csvname>
+    <csvphaseState>INWORK</csvphaseState>
+    <csvphaseWorkflow>TwoDimensionalPattern_WF</csvphaseWorkflow>
+    <csvgateWorkflow></csvgateWorkflow>
+    <csvseriesSelector></csvseriesSelector>
+  </csvPhaseTemplateBegin>
+  <csvRoleHolder handler="wt.project.LoadProject.createRoleHolder">
+    <csvroleToAssign>REVIEWER</csvroleToAssign>
+    <csvassignedPrincipal></csvassignedPrincipal>
+  </csvRoleHolder>
+  <csvPhaseTemplateEnd handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateEnd"></csvPhaseTemplateEnd>
+  <csvPhaseTemplateBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateBegin">
+    <csvname>XBC_UNDERREVIEW</csvname>
+    <csvphaseState>XBC_UNDERREVIEW</csvphaseState>
+    <csvphaseWorkflow></csvphaseWorkflow>
+    <csvgateWorkflow></csvgateWorkflow>
+    <csvseriesSelector></csvseriesSelector>
+  </csvPhaseTemplateBegin>
+  <csvRoleHolder handler="wt.project.LoadProject.createRoleHolder">
+    <csvroleToAssign>REVIEWER</csvroleToAssign>
+    <csvassignedPrincipal></csvassignedPrincipal>
+  </csvRoleHolder>
+  <csvPhaseTemplateEnd handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateEnd"></csvPhaseTemplateEnd>
+  <csvPhaseTemplateBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateBegin">
+    <csvname>已发布</csvname>
+    <csvphaseState>RELEASED</csvphaseState>
+    <csvphaseWorkflow></csvphaseWorkflow>
+    <csvgateWorkflow></csvgateWorkflow>
+    <csvseriesSelector></csvseriesSelector>
+  </csvPhaseTemplateBegin>
+  <csvRoleHolder handler="wt.project.LoadProject.createRoleHolder">
+    <csvroleToAssign>REVIEWER</csvroleToAssign>
+    <csvassignedPrincipal></csvassignedPrincipal>
+  </csvRoleHolder>
+  <csvPhaseTemplateEnd handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateEnd"></csvPhaseTemplateEnd>
+  <csvPhaseTemplateBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateBegin">
+    <csvname>XBC_CANCELLATION</csvname>
+    <csvphaseState>XBC_CANCELLATION</csvphaseState>
+    <csvphaseWorkflow></csvphaseWorkflow>
+    <csvgateWorkflow></csvgateWorkflow>
+    <csvseriesSelector></csvseriesSelector>
+  </csvPhaseTemplateBegin>
+  <csvRoleHolder handler="wt.project.LoadProject.createRoleHolder">
+    <csvroleToAssign>REVIEWER</csvroleToAssign>
+    <csvassignedPrincipal></csvassignedPrincipal>
+  </csvRoleHolder>
+  <csvPhaseTemplateEnd handler="wt.lifecycle.LoadLifeCycle.createPhaseTemplateEnd"></csvPhaseTemplateEnd>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>CHANGE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_UNDERREVIEW</csvsuccessorPhaseState>
+    <csvphaseTransition>NEXT</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_UNDERREVIEW</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_CANCELLATION</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>INWORK</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>REVISE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>CHANGE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>NEXT</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_UNDERREVIEW</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_CANCELLATION</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_UNDERREVIEW</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>REVISE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>CHANGE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_CANCELLATION</csvsuccessorPhaseState>
+    <csvphaseTransition>NEXT</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_UNDERREVIEW</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_CANCELLATION</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>RELEASED</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>REVISE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_CANCELLATION</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>CHANGE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_CANCELLATION</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_CANCELLATION</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_UNDERREVIEW</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_CANCELLATION</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>RELEASED</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_CANCELLATION</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>XBC_CANCELLATION</csvsuccessorPhaseState>
+    <csvphaseTransition>PROMOTE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvPhaseSuccessionBegin handler="wt.lifecycle.LoadLifeCycle.createPhaseSuccessionBegin">
+    <csvlifeCycleName>TwoDimensionalPattern_LC</csvlifeCycleName>
+    <csvpredecessorPhaseState>XBC_CANCELLATION</csvpredecessorPhaseState>
+    <csvsuccessorPhaseState>INWORK</csvsuccessorPhaseState>
+    <csvphaseTransition>REVISE</csvphaseTransition>
+  </csvPhaseSuccessionBegin>
+  <csvLifeCycleTemplateEnd handler="wt.lifecycle.LoadLifeCycle.createLifeCycleTemplateEnd"></csvLifeCycleTemplateEnd>
+</NmLoader>

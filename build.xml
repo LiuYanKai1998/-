@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--代码包整理:eclipse以ant运行build.xml中的buildjar-->
+<!--deploy文件夹下生成整理好的代码包-->
+<!--拷贝到windchill deploy目录下,手动解压缩到deploy根目录下-->
+<!--windchillshell中进入deploy目录执行ant -f build.xml deploy进行部署-->
+
+<project name="build" basedir="." default="deploy">
+	<description>customization building</description>
+	<property environment="env" />
+	<property name="base" location="." />
+	<property name="wthome" location="${env.WT_HOME}" />
+	<property name="bin" location="${wthome}/bin" />
+	<property name="userGroupDir" location="${wthome}/loadFiles/ext/wisplm/usergroup" />
+	<property name="classpath" location="${env.CLASSPATH}" />
+	<property name="wtcodebase" location="${wthome}/codebase" />
+	<property name="wtsrc" location="${wthome}/src" />
+	<property name="wtcustom" location="${wthome}/wtCustom" />
+	<property name="wtsafearea" location="${wthome}/wtSafeArea" />
+	<property name="sitemod" location="${wtsafearea}/siteMod" />
+	<property name="archivelocation" location="${env.archivelocation}" />
+	<target   name="deploy" depends="init,check_path,dist,javac"/><!--xConf,resourceBuild,csv2xml,xConf,loadFiles,MakeJar-->
+	<!--
+		Initialization
+	-->
+	<target name="init">
+		<mkdir dir="${base}/dist" />
+		<mkdir dir="${base}/src" />
+	</target>
+	<target name="init_os">
+		<condition property="is_win32">
+			<os family="windows" />
+		</condition>
+		<condition property="is_unix">
+			<os family="unix" />
+		</condition>
+	</target>
+	<target name="init_win32" depends="init_os" if="is_win32">
+		<echo message="initializing win32 commands" />
+		<property name="shell" value="cmd.exe" />
+		<property name="shopt" value="/c" />
+		<property name="ResourceBuild" value="${wthome}\bin\ResourceBuild.bat" />
+		<property name="modelInstall" value="${wthome}\bin\modelInstall.bat" />
+		<property name="xconfmanager" value="${wthome}\bin\xconfmanager.bat" />
+		<property name="JavaGen" value="${wthome}\bin\JavaGen.bat" />
+		<property name="ant" value="${wthome}\ant\bin\ant.bat" />
+	</target>
+	<target name="init_unix" depends="init_os" if="is_unix">
+		<echo message="initializing unix commands" />
+		<property name="shell" value="/bin/sh" />
+		<property name="shopt" value="" />
+		<property name="ResourceBuild" value="${wthome}/bin/ResourceBuild.sh" />
+		<property name="modelInstall" value="${wthome}/bin/modelInstall.sh" />
+		<property name="xconfmanager" value="${wthome}/bin/xconfmanager" />
+		<property name="JavaGen" value="${wthome}/bin/JavaGen.sh" />
+		<property name="ant" value="${wthome}/ant/bin/ant" />
+	</target>
+
+	<target name="check_path" depends="init_win32, init_unix">
+		<condition property="path_correct">
+			<and>
+				<available file="${wthome}/codebase/wt.properties" />
+			</and>
+		</condition>
+		<echo message="wt_home=${wthome}" />
+		<echo message="${path_correct}" />
+		<fail message="WT_HOME not correct, should work in windchill shell." unless="path_correct" />
+	</target>
+
+	<target name="help">
+		<echo message="Execute ant for a project with -projecthelp argument." />
+		<echo message="   ant -f ${ant.file} -projecthelp" />
+		<echo message="" />
+		<echo message="In addition, many targets may have individual help," />
+		<echo message="which can be accessed with [target].help," />
+		<echo message="where [target] is one of the listed targets." />
+		<echo message="" />
+		<echo message="wt_home     =${env.wt_home}" />
+		<echo message="installroot =${installroot}" />
+		<echo message="srcroot     =${srcroot}" />
+		<echo message="buildroot   =${buildroot}" />
+		<echo message="" />
+		<java classname="org.apache.tools.ant.Main">
+			<arg value="-buildfile" />
+			<arg value="${ant.file}" />
+			<arg value="-projecthelp" />
+		</java>
+	</target>
+
+	<!--
+		====================================================================
+	-->
+	<!--
+		Build rbInfo Resource Files
+	-->
+	<!--
+		====================================================================
+	-->
+	<target name="loadFiles" depends="check_path,i_dist" >
+		<exec executable="${shell}">
+			<!--<arg line="${shopt} windchill wt.load.LoadFileSet -file loadFiles/ext/mj/data/loadSet.xml  -Unattended -NoServerStop -u wcadmin -p wcadmin" />-->
+		</exec>
+	</target>
+	
+	<target name="resourceBuild" depends="check_path, i_resourcebuild" />
+	<target name="i_resourcebuild" depends="i_dist">
+		<exec executable="${shell}">
+			<arg line="${shopt} ${ResourceBuild} wt.lifecycle.StateRB true" />
+		</exec>
+		<exec executable="${shell}">
+			<arg line="${shopt} ${ResourceBuild} wt.project.RoleRB true" />
+		</exec>
+		<exec executable="${shell}">
+			<arg line="${shopt} ${ResourceBuild} wt.access.accessModelRB true" />
+		</exec>
+		<exec executable="${shell}">
+			<arg line="${shopt} ${ResourceBuild} wt.access.configuration.SecurityLabel1RB true" />
+		</exec>
+		<exec executable="${shell}">
+			<arg line="${shopt} ${ResourceBuild} ext.wisplm.dataimport.SelectTechnicianRB true" />
+		</exec>
+	</target>
+	<target name="xConf" depends="check_path,i_xConf" />
+	<target name="i_xConf" depends="i_dist">
+		<exec executable="${shell}">
+			<arg line="${shopt} ${xconfmanager} -p" />
+		</exec>
+	</target>
+
+	<!--
+		====================================================================
+	-->
+	<!-- Call ant -f codebase/MakeJar.xml 									-->
+	<!--
+		====================================================================
+	-->
+	<target name="MakeJar" depends="check_path,i_MakeJar" />
+	<target name="i_MakeJar" depends="i_dist">
+		<exec executable="${shell}">
+			<arg line="${shopt} ${ant} -f ${wthome}/codebase/MakeJar.xml" />
+		</exec>
+	</target>
+
+	<target name="csv2xml" depends="check_path,i_csv2xml" />
+	<target name="i_csv2xml" depends="i_dist">
+		<exec executable="${shell}">
+			<arg line="${shopt} windchill wt.load.util.CSV2XML -root ${userGroupDir} -encoding GBK" />
+		</exec>
+	</target>
+	
+	<!-- Clean the Old File -->
+	<target name="cleanOldFiles">
+		<delete includeEmptyDirs="true">
+			<fileset dir="${wthome}">
+				<!--<include name="codebase/ext/mj/data/**/*.class" />-->
+			</fileset>
+		</delete>
+	</target>
+
+
+	<!--
+		Copy Files
+	-->
+	<!--
+		====================================================================
+	-->
+	<target name="dist" depends="check_path, i_dist" />
+	<target name="i_dist">
+		<copy todir="${wthome}" includeEmptyDirs="Yes" overwrite="true" verbose="false">
+			<fileset dir="${base}">
+				<include name="site.xconf_add" />
+				<include name="codebase/**/*.*" />
+				<include name="db/**/*.*" />
+				<include name="src/**/*.*" />
+				<include name="loadFiles/**/*.*" />
+				<include name="loadXMLFiles/**/*" />
+				<include name="tasks/**/*.*" />
+				<include name="wtSafeArea/**/*.*" />
+				<include name="wtCustom/**/*.*" />
+				<exclude name="**/*.bak" />
+				<exclude name="**/vssver.scc" />
+				<exclude name="**/Thumbs.db" />
+				<exclude name="**/.svn/**" />
+			</fileset>
+		</copy>
+<!--
+		<copy todir="${wthome}/codebase">
+			<fileset dir="${base}/codebase">
+				<include name="**/*.*" />
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.tag" />
+				<include name="**/*.ser" />
+				<include name="**/*.xls" />
+				<include name="**/*.pdf" />
+				<exclude name="**/*.java" />
+				<exclude name="**/*.rbInfo" />
+				<exclude name="**/*.cat" />
+				<exclude name="**/*.ca~" />
+				<exclude name="**/*.mData" />
+				<exclude name="**/*.bak" />
+				<exclude name="**/Thumbs.db" />
+				<exclude name="**/.svn/**" />
+				<exclude name="**/vssver.scc" />
+			</fileset>
+		</copy>
+
+		<copy todir="${wthome}/src">
+			<fileset dir="${base}/src">
+				<include name="**/*.java" />
+				<include name="**/*.rbInfo" />
+				<include name="**/*.cat" />
+				<include name="**/*.mData" />
+				<exclude name="**/.svn/**" />
+			</fileset>
+		</copy>
+		<copy todir="${wthome}/wtCustom">
+			<fileset dir="${base}/wtCustom">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${wthome}">
+			<fileset dir="${base}">
+				<include name="mj_data.xconf" />
+				<include name="site.xconf.add_data" />
+				<exclude name="**/.svn/**" />
+			</fileset>
+		</copy>-->
+	</target>
+
+	<!-- Runtime (Method Server) classpath -->
+	<path id="runtime.class.path">
+		<pathelement location="${wthome}/codebase" />
+		<fileset dir="${wthome}/lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${wthome}/codebase/WEB-INF/lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${wthome}/codebase/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<property name="class.classpath" value="runtime.class.path" />
+
+	<!--
+		====================================================================
+	-->
+	<!--
+		Compiling Java Source
+	-->
+	<!--
+		====================================================================
+	-->
+	<target name="javac" depends="check_path,i_dist,i_javac" />
+	<target name="i_javac" description="Compile java classes.">
+		<javac srcdir="${base}/src" destdir="${wthome}/codebase" debug="on" listfiles="true" encoding="utf-8" deprecation="false">
+			<classpath>
+				<pathelement location="${wthome}/srclib/servlet.jar" />
+				<fileset dir="${wthome}/srclib" includes="**/*.jar" />
+				<fileset dir="${wthome}/codebase/WEB-INF/lib" includes="*.jar" />
+				<fileset dir="${wthome}/codebase/lib" includes="*.jar" />
+				<fileset dir="${wthome}/lib" includes="*.jar" />
+			</classpath>
+			<include name="ext/**/*.java" />
+			<exclude name="ext/wis/**/model/*.java"/>
+		</javac>
+		
+		<!--<javac srcdir="${base}/src" destdir="${wthome}/codebase" debug="on" failonerror="false" listfiles="true">
+			给编译器指定编码，防止出现："警告： 编码 UTF-8 的不可映射字符"
+			<compilerarg line="-encoding GBK" />
+			<classpath refid="${class.classpath}" />
+		    <include name="ext/sac3/forge/**/*.java" />
+			<include name="ext/sac3/util3/**/*.java" />
+			<exclude name="ext/sac3/util3/third/ExcelUtil.java" />
+			<include name="wt/vc/CMIterationHelper.java"/>
+		</javac>-->
+	</target>
+
+
+	<!--
+		====================================================================
+	-->
+	<!--
+		Copy package to deploy folder
+	-->
+	<!--
+		====================================================================
+	-->
+	<target name="copyto_deploy" depends="check_path">
+		<copy todir="${wthome}/deploy">
+			<fileset dir="${base}">
+				<include name="**/*" />
+				<exclude name="**/*.ca~" />
+				<exclude name="**/*.bak" />
+				<exclude name="**/Thumbs.db" />
+				<exclude name="**/.svn/**" />
+			</fileset>
+		</copy>
+	</target>
+	<tstamp>
+		<format property="timestamp" pattern="yyyyMMddHHmm" timezone="GMT+08:00" />
+	</tstamp>
+	<property name="jar_name" value="wis-${timestamp}.zip" />
+
+	<!-- Clean the build jar -->
+	<target name="clean">
+		<delete>
+			<fileset dir="${base}">
+				<include name="${base}/dist/${jar_name}" />
+			</fileset>
+		</delete>
+	</target>
+	<!--打包成jar包-->
+
+	<!-- build deploy files -->
+	<target name="buildjar" description="build deploy files" depends="init,clean">
+
+		<jar jarfile="${base}/deploy/${jar_name}" basedir="${base}" encoding="UTF-8">
+			<include name="src/**/*.*" />
+			<include name="src_gen/**/*.*" />
+			<include name="wtCustom/**/*.*" />
+			<include name="codebase/**/*.*" />
+			<include name="loadFiles/**/*.*" />
+			<include name="db/**/*.*" />
+			<include name="conf/**/*.*" />
+			<include name="build.xml" />
+			<include name="site.xconf_add"/>
+			<include name="site.xconf_add20210804"/>
+			<include name="doc/部署说明.txt" />
+			<exclude name="codebase/ext/**/.xconf-backup/*.*" />
+			<exclude name="deploy/*.*" />
+			<exclude name="**/vssver.scc" />
+			<!--exclude name="**/*.class" /-->
+			<exclude name="**/*.bak" />
+			<exclude name="**/Thumbs.db" />
+			<exclude name="**/*.ca~" />
+			<exclude name="**/.svn/**" />
+		</jar>
+	</target>
+
+	<target name="buildjar_add" description="build deploy files" depends="init,clean">
+
+		<jar jarfile="${base}/deploy/${jar_name}" basedir="${base}" encoding="UTF-8">
+			<include name="src/**/*.*" />
+			<include name="src_gen/**/*.*" />
+			<include name="wtCustom/**/*.*" />
+			<include name="codebase/**/*.*" />
+			<include name="loadFiles/**/*.*" />
+			<include name="db/**/*.*" />
+			<include name="conf/**/*.*" />
+			<include name="build.xml" />
+			<include name="site.xconf_add" />
+			<include name="deploy.txt" />
+			<exclude name="codebase/ext/**/.xconf-backup/*.*" />
+			<exclude name="codebase/WEB-INF/lib/*.*" />
+			<exclude name="codebase/ext/**/*.ttc" />
+			<exclude name="codebase/ext/**/*.TTF" />
+			<exclude name="deploy/*.*" />
+			<exclude name="loadFiles/ext/**/usergroup/*.*" />
+			<exclude name="**/vssver.scc" />
+			<!--exclude name="**/*.class" /-->
+			<exclude name="**/*.bak" />
+			<exclude name="**/Thumbs.db" />
+			<exclude name="**/*.ca~" />
+			<exclude name="**/.svn/**" />
+			<include name="增量部署说明" />
+		</jar>
+	</target>
+
+</project>

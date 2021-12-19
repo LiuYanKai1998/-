@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE actionmodels SYSTEM "actionmodels.dtd">
+<actionmodels>
+<!-- 文档菜单 -->
+<model name="docs row actions toolbar" menufor="wt.doc.WTDocument">
+
+		 <!-- 创建二维图纸更改单 -->
+		 <action   name="create2DChange"                             type="TwoDimensionalPattern" />
+
+         
+</model>
+
+</actionmodels>
+

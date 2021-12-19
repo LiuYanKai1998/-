@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader
+  SYSTEM "standardX26.dtd">
+<NmLoader>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>ChangeControl</csvname>
+      <csvhierarchyDisplayName>更改控制流程全局属性</csvhierarchyDisplayName>
+      <csvorganizerPaths></csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name/>
+      <csvdescription/>
+      <csvdata_type>ORG</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier/>
+   </csvAttrDefinizer>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>sign_Approver</csvname>
+      <csvhierarchyDisplayName>sign_Approver</csvhierarchyDisplayName>
+      <csvorganizerPaths>ChangeControl</csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name>批准者</csvdisplay_name>
+      <csvdescription>sign_Approver</csvdescription>
+      <csvdata_type>STR</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier>sign_Approver</csvlogicalIdentifier>
+   </csvAttrDefinizer>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>sign_Preparor</csvname>
+      <csvhierarchyDisplayName>sign_Preparor</csvhierarchyDisplayName>
+      <csvorganizerPaths>ChangeControl</csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name>编制者</csvdisplay_name>
+      <csvdescription>sign_Preparor</csvdescription>
+      <csvdata_type>STR</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier>sign_Preparor</csvlogicalIdentifier>
+   </csvAttrDefinizer>
+   <csvAttrDefinizer handler="wt.iba.definition.DefinitionLoaderWithCache.createAttrDefinizer">
+      <csvname>sign_Countersigner</csvname>
+      <csvhierarchyDisplayName>sign_Countersigner</csvhierarchyDisplayName>
+      <csvorganizerPaths>ChangeControl</csvorganizerPaths>
+      <csvdefinitionPaths/>
+      <csvdisplay_name>会签者</csvdisplay_name>
+      <csvdescription>sign_Countersigner</csvdescription>
+      <csvdata_type>STR</csvdata_type>
+      <csvQoMName/>
+      <csvnameValuePairs/>
+      <csvlogicalIdentifier>sign_Countersigner</csvlogicalIdentifier>
+   </csvAttrDefinizer>
+</NmLoader>

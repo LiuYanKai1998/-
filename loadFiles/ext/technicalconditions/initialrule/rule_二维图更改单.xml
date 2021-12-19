@@ -1,0 +1,76 @@
+            <AttributeValues objType="wt.doc.WTDocument|com.xbc.2DDrawingChangeSheet">
+
+               <!-- set the folder -->
+               <AttrValue id="folder.id" algorithm="com.ptc.core.foundation.folder.server.impl.FolderPathAttributeAlgorithm">
+                  <Arg>/Default/二维图更改单</Arg>
+               </AttrValue>
+
+               <!-- set the lifecycle -->
+               <AttrValue id="lifeCycle.id" algorithm="com.ptc.core.foundation.lifecycle.server.impl.LifeCycleTemplateAttributeAlgorithm">
+                  <Arg>
+                    TwoDimensionalPatternChange_LC
+                  </Arg>
+               </AttrValue>
+
+               <!-- set the team template -->
+               <AttrValue id="teamTemplate.id" algorithm="com.ptc.core.foundation.team.server.impl.TeamTemplateAttributeAlgorithm">
+                  <Arg>Default</Arg>
+               </AttrValue>
+
+               <!-- set the number to a generated number -->
+               <AttrValue id="number" algorithm="com.ptc.windchill.enterprise.revisionControlled.server.impl.NumberGenerator">
+                  <Arg>{GEN:wt.enterprise.SequenceGenerator:WTDOCUMENTID_seq:10:0}</Arg>
+               </AttrValue>
+
+               <!-- set the version info to a generated version info -->
+               <AttrValue id="MBA|versionInfo" algorithm="com.ptc.core.foundation.vc.server.impl.VersionInfoGenerator">
+                  <Arg>wt.series.HarvardSeries</Arg>
+               </AttrValue>
+                  
+               <!-- set the doc type - enumerated type, this field is no longer displayed in the UI so just default it -->
+               <AttrValue id="docType" algorithm="wt.rule.algorithm.EnumTypeConstant">
+                  <Arg>wt.doc.DocumentType</Arg>
+                  <Arg>$$Document</Arg>
+               </AttrValue>   
+               
+               <!-- set the department type - enumerated type, this field is no longer displayed in the UI so just default it -->
+               <AttrValue id="department" algorithm="wt.rule.algorithm.EnumTypeConstant">
+                  <Arg>wt.doc.DepartmentList</Arg>
+                  <Arg>ENG</Arg>
+               </AttrValue>
+   
+               <!-- specify AttrConstraint tag -->
+               <AttrConstraint id="lifeCycle.id" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">  	         
+	       	   <Value algorithm="com.ptc.core.rule.server.impl.GetServerAssignedConstraint"/>
+	       	   <Value algorithm="com.ptc.core.rule.server.impl.GetImmutableConstraint"/>
+	       </AttrConstraint>
+	       <AttrConstraint id="lifeCycle" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">
+	       	   <Value algorithm="com.ptc.core.rule.server.impl.GetServerAssignedConstraint"/>      
+	       	   <Value algorithm="com.ptc.core.rule.server.impl.GetImmutableConstraint"/>
+	       </AttrConstraint>
+	       <AttrConstraint id="folder.id" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetServerPreGeneratedValue"/>
+				<Value algorithm="com.ptc.core.rule.server.impl.GetRendererConstraint">
+					<Arg>SelectGeneratedFolderByDefault</Arg>
+				</Value>
+	       </AttrConstraint>	      
+	       <AttrConstraint id="number" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">
+	       	   <!-- <Value algorithm="com.ptc.core.rule.server.impl.GetServerAssignedConstraint"/>
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetImmutableConstraint"/> -->
+	       </AttrConstraint>	           
+	       <AttrConstraint id="teamTemplate.id" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">  	         
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetServerAssignedConstraint"/>                         
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetImmutableConstraint"/>
+	       </AttrConstraint>
+	       <AttrConstraint id="teamTemplate" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetServerAssignedConstraint"/>      
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetImmutableConstraint"/>
+	       </AttrConstraint>   
+	       <AttrConstraint id="organization.id" algorithm="com.ptc.core.rule.server.impl.GatherAttributeConstraints">
+	       	    <Value algorithm="com.ptc.core.rule.server.impl.GetServerPreGeneratedValue"> 
+	       	       <Value algorithm="com.ptc.windchill.enterprise.org.server.impl.OwningOrgDefaultAlgorithm"/> 
+	       	    </Value> 
+	       </AttrConstraint>
+            </AttributeValues>
+
+               
